@@ -1,0 +1,154 @@
+<!--
+  Generated template for the SchedulePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+<ion-content>
+  <ion-buttons left>
+    <button ion-button (click)="dismiss()" icon-left class="details-back-button">
+      <ion-icon name="ios-close-outline"></ion-icon>
+    </button>
+  </ion-buttons>
+  <h5>1. Selecciona el servicio</h5>
+    <form padding [formGroup]="appoinmentForm">
+      <div class="input-section">
+        <ion-item class="select-section">
+          <ion-label><ion-icon name="browsers"></ion-icon>Categoría</ion-label>
+          <ion-select  [formControl]="appoinmentForm.controls['bk_category']" (ionChange)="changeCategory($event)">
+            <ion-option *ngFor="let dC of doctorsCategory" value="{{dC.title}}">
+              {{dC.data}}
+            </ion-option>
+          </ion-select>
+        </ion-item>
+        <div *ngIf="submitted && appoinmentForm.controls.bk_category.errors" class="invalid-feedback">
+          <p *ngIf="appoinmentForm.controls.bk_category.errors.required" style="color:red">Ingresa categoría</p>
+        </div> 
+
+        <ion-item class="select-section">
+          <ion-label><ion-icon name="browsers"></ion-icon>Servicio</ion-label>
+          <ion-select  [formControl]="appoinmentForm.controls['bk_service']"  (ionChange)="chooseService($event)">
+            <ion-option *ngFor="let cS of categoryServices" value="{{cS.key}}">
+              {{cS.title}} ({{cS.price}})
+            </ion-option>
+          </ion-select>
+        </ion-item>
+        <div *ngIf="submitted && appoinmentForm.controls.bk_service.errors" class="invalid-feedback">
+          <p *ngIf="appoinmentForm.controls.bk_service.errors.required" style="color:red">Ingresa servicio</p>
+        </div> 
+      </div>
+      
+<h5>2. Selecciona la fecha</h5>
+      <div class="calendar-header">
+        <ion-row class="calendar-month">
+          <ion-col col-2 (click)="goToLastMonth()"><ion-icon name="arrow-back"></ion-icon></ion-col>
+          <ion-col col-8>{{currentMonth}} {{currentYear}}</ion-col>
+          <ion-col col-2 (click)="goToNextMonth()"><ion-icon name="arrow-forward"></ion-icon></ion-col>
+        </ion-row>
+      </div>
+      <div class="calendar-body">
+        <ion-grid>
+          <ion-row class="calendar-weekday">
+            <ion-col>D</ion-col>
+            <ion-col>L</ion-col>
+            <ion-col>M</ion-col>
+            <ion-col>M</ion-col>
+            <ion-col>J</ion-col>
+            <ion-col>V</ion-col>
+            <ion-col>S</ion-col>
+          </ion-row>
+          <ion-row class="calendar-date">
+            <ion-col col-1 *ngFor="let lastDay of daysInLastMonth" class="last-month">{{ ('0' + lastDay).slice(-2) }}</ion-col>
+            <ion-col col-1 *ngFor="let day of daysInThisMonth"  (click)="selectDate(day)">
+              <span  [ngClass]="{'selected' : selectedDay == day}" ><span [ngClass]="checkHasApointment(day)">{{('0' + day).slice(-2)}}</span>
+              </span>
+              <!-- <span class="currentDate" *ngIf="currentDate === day; else otherDate"><span [ngClass]="checkHasApointment(day)">
+                {{('0' + day).slice(-2)}}
+                
+              </span></span>
+              <ng-template #otherDate class="otherDate"><span  [ngClass]="{'selected' : selectedDay == day}" ><span [ngClass]="checkHasApointment(day)">{{('0' + day).slice(-2)}}</span></span></ng-template> -->
+            </ion-col>
+            <ion-col col-1 *ngFor="let nextDay of daysInNextMonth" class="next-month">{{('0' + nextDay).slice(-2)}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <h5>3. Selecciona la hora</h5>  
+      <div *ngIf="doctorsTimeSlotData" class="slot-section">
+        <!-- <span class="time-slot" *ngFor="let dts of doctorsTimeSlotData">{{dts.slot_time}}</span> -->
+        <button ion-button block color="secondary" *ngFor="let dts of doctorsTimeSlotData" (click)="onSlotChoose(dts)" [ngClass]="{'selected-slot-data' : dts.key == selectedSlot}" >
+          <span [ngClass]="{'selected-slot' : !dts.isSelected}">{{dts.slot_time}}</span>
+        </button>
+      </div>
+      <div *ngIf="!doctorsTimeSlotData" class="slot-section">
+        No hay citas disponibles para este día
+      </div>
+      <h5>4. Información del paciente</h5>
+      <div class="user-type-container">
+        <p>
+          <ion-item>
+              <ion-checkbox  [formControl]="appoinmentForm.controls['custom']" (click)="datachanged($event)" [(ngModel)]="tremsData.isChecked" color="inputborder"></ion-checkbox>
+          </ion-item>
+        </p>
+        <p class="terms-text">¿Es esta una cita para alguien más?</p>
+      </div>
+      <div class="input-section footer-form">
+        <ion-item class="custom-ion-item">
+          <ion-label floating class="custom-ion-label label__placeholder">Nombre completo y apellidos</ion-label>
+          <ion-input type="text" clearInput  [formControl]="appoinmentForm.controls['subject']"></ion-input>
+        </ion-item>
+        <div *ngIf="submitted && appoinmentForm.controls.subject.errors" class="invalid-feedback">
+          <p *ngIf="appoinmentForm.controls.subject.errors.required" style="color:red">Ingresa nombre completo y apellidos</p>
+        </div>    
+        <ion-item class="custom-ion-item">
+          <ion-label floating class="custom-ion-label label__placeholder">Cédula paciente</ion-label>
+          <ion-input type="text" clearInput  [formControl]="appoinmentForm.controls['username']"></ion-input>
+        </ion-item>
+        <div *ngIf="submitted && appoinmentForm.controls.username.errors" class="invalid-feedback">
+          <p *ngIf="appoinmentForm.controls.username.errors.required" style="color:red">Ingresa la cédula del paciente</p>
+        </div> 
+        <ion-item class="custom-ion-item">
+          <ion-label floating class="custom-ion-label label__placeholder">Teléfono paciente</ion-label>
+          <ion-input type="text" clearInput  [formControl]="appoinmentForm.controls['userphone']"></ion-input>
+        </ion-item>
+        <div *ngIf="submitted && appoinmentForm.controls.userphone.errors" class="invalid-feedback">
+          <p *ngIf="appoinmentForm.controls.userphone.errors.required" style="color:red">Ingresa un teléfono</p>
+        </div>
+        <ion-item class="custom-ion-item">
+          <ion-label floating class="custom-ion-label label__placeholder">Email paciente</ion-label>
+          <ion-input type="email" clearInput  [formControl]="appoinmentForm.controls['useremail']"></ion-input>
+        </ion-item>
+        <div *ngIf="submitted && appoinmentForm.controls.useremail.errors" class="invalid-feedback">
+          <p *ngIf="appoinmentForm.controls.useremail.errors.required" style="color:red"> Ingresa un Email</p>
+        </div>
+        <ion-item class="custom-ion-item">
+          <ion-label floating class="custom-ion-label label__placeholder">Nota (Opcional)</ion-label>
+          <ion-input type="text" clearInput  [formControl]="appoinmentForm.controls['booking_note']"></ion-input>
+        </ion-item>
+        <!-- <div *ngIf="submitted && appoinmentForm.controls.booking_note.errors" class="invalid-feedback">
+          <p *ngIf="appoinmentForm.controls.booking_note.errors.required" style="color:red">Ingresa una nota!</p>
+        </div> -->
+      </div>
+    </form>
+    <ion-row class="submit-section">
+      <ion-col text-center>
+        <button ion-button block color="secondary" (click)="onScheDule()" class="new-button">
+          <span *ngIf="!clicked">¡Agendar!</span>
+            <ion-spinner *ngIf="clicked" name="crescent"></ion-spinner>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-content>
+
+  <ion-footer>
+    <ion-grid class="common-footer">
+      <ion-row class="footer-inner">
+        <ion-col col-2><img (click)="navCtrl.push('ProfilePage')" class="footer-image" src="assets/imgs/icon3.png"></ion-col>
+        <ion-col col-2><img (click)="navCtrl.push('MyBookingsPage')" class="footer-image" src="assets/imgs/icon4.png"></ion-col>
+        <ion-col col-4><img (click)="navCtrl.setRoot('HomePage')" class="footer-image center" src="assets/imgs/icon5.png"></ion-col>
+        <ion-col col-2><img (click)="navCtrl.push('HelpPage')" class="footer-image" src="assets/imgs/icon6.png"></ion-col>
+        <ion-col col-2><img (click)="navCtrl.push('FavouritePage')" class="footer-image" src="assets/imgs/icon7.png"></ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-footer>

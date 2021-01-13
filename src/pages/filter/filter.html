@@ -1,0 +1,63 @@
+<!--
+  Generated template for the FilterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content>
+    <ion-buttons class="ion-btn" left>
+        <button ion-button (click)="dismiss()" icon-left class="details-back-button">
+            <ion-icon name="close-outline">&times;</ion-icon>
+        </button>
+        <span class="heading-text">Filtros</span>
+    </ion-buttons>
+  <form padding [formGroup]="searchForm">
+    <div class="form-content">
+ 
+        <h5 class="filter-item-title">Precio</h5>
+        <ion-item class="input-search-sections range-item">
+            <!-- <ion-label class="main-label">Precio</ion-label> -->
+            <ion-range  [formControl]="searchForm.controls['pricerange']" dualKnobs="true" min="200000" max="600000" step="10" (ionChange)="updatePriceResults()">
+                <ion-label range-left class="left-section">$ {{minPrice}}</ion-label>
+                <ion-label range-right class="right-section">$ {{maxPrice}}</ion-label>
+            </ion-range>
+        </ion-item>
+        <h5 class="filter-item-title">Ubicación</h5>
+        <!-- <ion-item class="input-search-sections">
+          <ion-label></ion-label>
+          <ion-input class="ion-inp-keyw" [formControl]="searchForm.controls['geo_location']" type="text" placeholder="Tu Ubicación" clearInput ></ion-input>
+        </ion-item> -->
+        <h5 class="filter-item-title">Distancia</h5>
+      <ion-item class="input-search-sections range-item">
+        <!-- <ion-label class="main-label">Distancia</ion-label> -->
+
+        <ion-range [formControl]="searchForm.controls['geo_distance']" min="1" max="35" color="#c5c5c5" (ionChange)="updateResults()">
+          <ion-label range-left class="left-section">{{localLength}} kM</ion-label>
+          <ion-label range-right class="right-section">35 kM</ion-label>
+        </ion-range>
+      </ion-item>
+      <h5 class="filter-item-title">Palabra Clave</h5>
+      <ion-item class="input-search-sections">
+        <ion-label></ion-label>
+        <ion-input class="ion-inp-keyw" [formControl]="searchForm.controls['keyword']" type="text" placeholder="" clearInput ></ion-input>
+      </ion-item>
+
+
+      <ion-grid>
+          <ion-row>
+              <!--<ion-col size="6">-->
+              <!--<button ion-button block color="danger" (click)="cancel()" class="cancel">-->
+                  <!--<span>Atrás</span>-->
+              <!--</button>-->
+              <!--</ion-col>-->
+              <ion-col class="flex-added">
+              <button ion-button block color="buttoncolor" (click)="onSearch()" class="pay">
+                  <span>Filtrar</span>
+              </button>
+              </ion-col>
+          </ion-row>
+      </ion-grid>
+    </div>
+  </form>
+</ion-content>

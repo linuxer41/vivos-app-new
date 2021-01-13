@@ -1,0 +1,14 @@
+page-payment-type {
+    ion-footer button {
+    	margin: 0 !important;
+  	}
+  	.right{float: right; font-size: 10px;}
+    ion-list{border-bottom: 1px solid #ccc;}
+    h3 {
+        color: color($colors, welcome-submeadline);
+    }  
+    new-button {
+        margin-top: 10px;
+        height: 40px !important;
+    }
+}

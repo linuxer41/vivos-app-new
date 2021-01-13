@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>My First List</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+      <ion-icon name="{{item.icon}}" item-left></ion-icon>
+      {{item.title}}
+      <div class="item-note" item-right>
+        {{item.note}}
+      </div>
+    </button>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-grid class="common-footer">
+    <ion-row class="footer-inner">
+      <ion-col col-2><img (click)="navCtrl.push('ProfilePage')" class="footer-image" src="assets/imgs/icon3.png"></ion-col>
+      <ion-col col-2><img (click)="navCtrl.push('MyBookingsPage')" class="footer-image" src="assets/imgs/icon4.png"></ion-col>
+      <ion-col col-4><img (click)="navCtrl.setRoot('HomePage')" class="footer-image center" src="assets/imgs/icon5.png"></ion-col>
+      <ion-col col-2><img (click)="navCtrl.push('HelpPage')" class="footer-image" src="assets/imgs/icon6.png"></ion-col>
+      <ion-col col-2><img (click)="navCtrl.push('FavouritePage')" class="footer-image" src="assets/imgs/icon7.png"></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

@@ -1,0 +1,165 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content>
+  <!-- <button ion-button menuToggle class="ionic-menu-toogle">
+    <ion-icon name="menu"></ion-icon>
+  </button>  -->
+  <form padding [formGroup]="searchForm" *ngIf="doctors.length == 0">
+    <div class="header-Item">
+      <img class="design-image-1" src="assets/imgs/icon8.png">
+      <img class="design-image-2" src="assets/imgs/icon9.png">
+      <h1 left>
+        ¡Hola,<br>{{userName}}!
+      </h1>
+      <h4>Encuentra <strong>{{title}}</strong> particulares a los mejores precios</h4>
+       <h5>1. Selecciona la categoría y la especialidad</h5>
+    </div>
+    <ion-card class="cardo" *ngFor="let category of categories" (click)="itemTapped(category.id, category.slug, category.title, true)">
+      <ion-icon name="md-checkmark" *ngIf="choosenCategoryId == category.id"></ion-icon>
+      <ion-item>
+        <img class="category-image" *ngIf="category.id == 127"src="assets/imgs/icon11.png">
+        <img class="category-image" *ngIf="category.id == 125"src="assets/imgs/icon12.png">
+        <img class="category-image" *ngIf="category.id == 122"src="assets/imgs/icon14.png">
+        <img class="category-image" *ngIf="category.id == 5260"src="assets/imgs/icon13.png">
+        <h2 class="title">{{category.title}}</h2>
+        <p>{{category.specialities.length}} aliados</p>
+      </ion-item>
+    </ion-card>
+    <div class="form-content">
+      <ion-item class="select-section input-search-sections" id="speciality">
+        <ion-label>Especialistas en...</ion-label>
+        <ion-select id="input_speciality" [formControl]="searchForm.controls['speciality']">
+          <ion-option *ngFor="let subCategory of subCategories" value="{{subCategory.slug}}">
+            {{subCategory.name}}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+  
+      <!-- <ion-item class="input-search-sections">
+        <ion-label></ion-label>
+        <ion-input type="text" placeholder="Palabra clave" clearInput  [formControl]="searchForm.controls['keyword']"></ion-input>
+      </ion-item> -->
+      <div class="header-Item">
+       <h5>2. Selecciona la ciudad</h5>
+      </div>
+
+      <!--ssss-->
+      <!--<ion-item class="input-search-sections"  (click)="openMap()">-->
+        <!--<ion-label></ion-label>-->
+        <!--<ion-input type="text" disabled="true" placeholder="Tu ubicación" clearInput  [formControl]="searchForm.controls['geo_city']"></ion-input>-->
+      <!--</ion-item>   -->
+      <!--ssss-->
+
+
+
+
+    <ion-item class="select-section input-search-sections" id="city">
+      <ion-label>Ciudad</ion-label>
+      <ion-select id="input_city" [formControl]="searchForm.controls['city']">
+        <ion-option *ngFor="let item of cities" value="{{item}}">
+          {{item}}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+
+
+      <!-- <ion-list [hidden]="autocompleteItems.length == 0" class="list-result">
+        <ion-item *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResult(item)">
+          {{ item.description }}
+        </ion-item>
+      </ion-list> -->
+
+
+
+
+      <!-- <ion-item class="input-search-sections range-item">
+        <ion-label class="main-label">Distancia</ion-label>
+        <ion-range min="1" max="35" color="secondary" [formControl]="searchForm.controls['geo_distance']" (ionChange)="updateResults()">
+          <ion-label range-left class="left-section">{{localLength}} kM</ion-label>
+          <ion-label range-right class="right-section">35 kM</ion-label>
+        </ion-range>
+      </ion-item>
+
+      <ion-item class="input-search-sections range-item">
+        <ion-label class="main-label">Precio</ion-label>
+        <ion-range dualKnobs="true" [formControl]="searchForm.controls['pricerange']" min="1" max="99999" step="10" (ionChange)="updatePriceResults()">
+          <ion-label range-left class="left-section">$ {{minPrice}}</ion-label>
+          <ion-label range-right class="right-section">$ {{maxPrice}}</ion-label>
+        </ion-range>
+      </ion-item> -->
+    
+  
+      <ion-row class="submit-section">
+        <ion-col text-center>
+          <button ion-button block  class="new-button" (click)="onSearch()">
+        <span *ngIf="!clicked">¡Buscar!</span>
+              <ion-spinner *ngIf="clicked" name="crescent"></ion-spinner>
+        </button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </form>
+  <div class="list-container" *ngIf="doctors.length > 0">    
+    <ion-buttons left>
+      <button ion-button (click)="dismiss()" icon-left class="details-back-button">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      
+    </ion-buttons>
+    <div padding class="list-section">
+      <img class="design-image-1" src="assets/imgs/icon1.png">
+      <img class="design-image-2" src="assets/imgs/icon2.png">
+      <h2 right>
+        {{title}} cerca de ti...
+      </h2>
+      <div class="filter-icon-container">
+        <span class="filter" (click)="openFilter()">
+          Filtrar
+        </span>
+      </div>
+      <div class="listing-card-parent" *ngFor="let doctor of doctors" >
+        <button ion-button clear color="primary-transparent" [ngClass]="{isactive : checkSelected(doctor.id)}" (tap)="setfavourite(doctor.id)">
+          <ion-icon slot="end" name="ios-heart"></ion-icon>
+        </button>
+        <ion-card class="listing-card" (click)="details(doctor.id)">
+          <ion-card-content>
+            <p class="card-category">{{doctor.directory_type_name}}</p>
+          </ion-card-content>
+          <ion-card-header>
+            {{doctor.name}}
+          </ion-card-header>
+          <ion-card-content class="content-section">
+            <p class="doctor-price-spec">
+              <span class="speciality" start *ngIf="doctor.all.user_profile_specialities">{{doctor.all.user_profile_specialities.join()}}</span>
+              <span class="price" end *ngIf="doctor.all.calender_price">$ {{doctor.all.calender_price}}</span>
+            </p>
+            <p>
+              <span *ngIf="doctor.address">{{doctor.address}}</span> 
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </div>
+      
+      
+      <!-- <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll> -->
+    </div>    
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-grid class="common-footer">
+    <ion-row class="footer-inner">
+      <ion-col col-2><img (click)="navCtrl.push('ProfilePage')" class="footer-image" src="assets/imgs/icon3.png"></ion-col>
+      <ion-col col-2><img (click)="navCtrl.push('MyBookingsPage')" class="footer-image" src="assets/imgs/icon4.png"></ion-col>
+      <ion-col col-4><img (click)="navCtrl.setRoot('HomePage')" class="footer-image center" src="assets/imgs/icon5.png"></ion-col>
+      <ion-col col-2><img (click)="navCtrl.push('HelpPage')" class="footer-image" src="assets/imgs/icon6.png"></ion-col>
+      <ion-col col-2><img (click)="navCtrl.push('FavouritePage')" class="footer-image" src="assets/imgs/icon7.png"></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

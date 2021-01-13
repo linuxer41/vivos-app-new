@@ -1,0 +1,85 @@
+page-login {
+	.image-container {
+        color: color($colors, light);
+        letter-spacing: 1px;
+        padding: 20px 10px;
+		text-align: center;
+		img {
+            height: 70px;
+        }
+	}
+	.toolbar-background {
+		border-width: 0 !important; 
+		background: color($colors, backgroundcolor);
+	}
+	.content {
+		background-color: color($colors, backgroundcolor);
+	}
+	.header::after {
+		background-image: none;
+	}
+
+	form ion-item {margin-bottom: 10px !important;}
+	ion-item {padding-left:0 !important;}
+	ion-item .item-inner{padding-left:16px;}
+	.submit-section .col{
+		padding: 0 !important;
+	}
+	ion-item, .item-ios, .item-md  {
+		background-color: color($colors, backgroundcolor);
+		ion-label[stacked] , .label-ios[stacked], .label-md[stacked]{
+			font-size: 16px;
+		}
+	}
+	.sign-in-container {
+		.sign-in-button {
+			background: none;
+			color: color($colors, welcome-signup);
+			font-size: 20px;
+			font-weight: bold;
+		}
+	}
+	.text-input {
+		color: color($colors, buttoncolor);
+		font-size: 18px;
+    	font-weight: bold;
+	}
+
+	.item-ios.item-block .item-inner,  .item-ms.item-block .item-inner {
+		padding-right: 8px;
+		border-bottom: 2px solid color($colors, inputborder);
+	}
+
+	form ion-item .item-inner {
+		padding-left: 0;
+	}
+	.password-type input{
+		letter-spacing: 4px;
+	}
+
+	.item-ios.item-label-stacked .text-input, .item-ios.item-label-floating .text-input{
+		margin-top: 0px;
+	} 
+
+	ion-button.new-button, .button-ios.new-button, .button-md.new-button {
+		height: 55px !important;
+		font-size: 18px;
+		font-weight: 500;
+		width: 60%;
+		margin: 0 auto;
+	}
+
+	@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
+		.image-container {
+			margin-bottom: 110px;
+		}
+		.submit-container {
+			margin-top: 90px;
+		}
+
+		
+	}
+}

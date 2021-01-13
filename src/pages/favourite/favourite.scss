@@ -1,0 +1,66 @@
+page-favourite {
+    .scroll-content {
+        background: rgb(175,160,227);
+        background: -moz-linear-gradient(142deg, rgba(175,160,227,1) 0%, rgba(130,224,227,1) 100%);
+        background: -webkit-linear-gradient(142deg, rgba(175,160,227,1) 0%, rgba(130,224,227,1) 100%);
+        background: linear-gradient(142deg, rgba(175,160,227,1) 0%, rgba(130,224,227,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#afa0e3",endColorstr="#82e0e3",GradientType=1);
+    }
+    .list-section {
+        position: relative;
+        margin-top: 20px;
+        .design-image-1 {
+            position: absolute;
+            width: 20px;
+            left: 44px;
+            top: 4px;
+        }
+        .design-image-2 {
+            position: absolute;
+            width: 80px;
+            right: 50px;
+            top: -50px;
+        }   
+    }
+
+    .details-back-button{
+        border-radius: 50%;
+        height: 32px;
+        width: 32px;
+        margin-left: 10px;
+        margin-top: 10px;
+        background-color: color($colors, backgroundcolor);
+        color: color($colors, home-headline);
+    }   
+
+    .listing-card-parent {
+        position: relative;
+        button {
+            position: absolute;
+            right: 0px;
+            top: 0px;
+        }
+        button ion-icon{
+            font-size: 20px;
+        }
+        .listing-card {
+            margin: 12px 0;
+            width: 100%;
+            border-radius: 15px;
+        }
+        ion-card-header {
+            padding-bottom: 10px;
+        }
+        .content-section {
+            padding-bottom: 10px;
+        }
+        .speciality {
+            font-size: 16px;
+        }
+        .price {
+            float: right;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    }
+}

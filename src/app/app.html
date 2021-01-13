@@ -1,0 +1,22 @@
+<!-- <ion-menu [content]="content"  *ngIf="isLogged">
+  <ion-content>
+    <ion-card text-center class="custom-card">
+      <div padding class="custom-card-inner" *ngIf="userDetails">
+        <img [src]="userDetails.data.data.avatar" onerror="this.src='http://placehold.it/300x200'"/>
+        <h2>{{userDetails.data.data.display_name}}</h2>
+        <p>{{userDetails.data.data.user_email}}</p>
+      </div>
+    </ion-card>
+    <ion-list class="menu-listing">
+      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        <ion-icon class="icon-fw" [name]=p.icon></ion-icon>{{p.title}}
+      </button>
+      <button ion-item (click)="logOut()">
+        <ion-icon class="icon-fw" name="power"></ion-icon>Logout
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu> -->
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

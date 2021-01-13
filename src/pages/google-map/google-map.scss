@@ -1,0 +1,37 @@
+page-google-map {
+    #map {
+        height: 100%;
+    }
+    .scroll-content {
+        margin-bottom: 16px;
+    }
+    .modal-wrapper{
+        height: 25% !important;
+    }
+    .text-input {
+        margin-left: 0 !important;
+        padding-right: 10px !important;
+    }
+    .input-search-sections {
+        padding-left: 5px;
+        border: 1px solid color($colors,inputborder);
+        .item-inner {
+            border-bottom: 0 !important;
+        }
+    }
+    
+    .cancel, .pay {
+        height: 35px;
+    }
+    .search-container{
+        position: relative;
+        .list-result{
+            position: absolute;
+            z-index: 9;
+            width: 100%;
+            ion-item {
+                padding-left: 5px;
+            }
+        }
+    }
+}

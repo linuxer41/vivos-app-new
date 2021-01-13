@@ -1,0 +1,137 @@
+page-welcome {
+    .content{
+        background-color: color($colors, backgroundcolor);
+    }
+    .scroll-content {
+        margin-bottom: 50px !important;
+    }
+    ion-footer .toolbar-background {
+        background-color: color($colors, backgroundcolor);
+        border-width:0px !important;
+    }
+    ion-button, .button-ios, .button-md {
+        color: #fff;
+        background-color:color($colors, buttoncolor);;
+        border-radius: 30px;
+        height: 50px;
+    }    
+    .footer-section {
+        text-align: center;
+        font-size: 15px;
+        
+        .sign-in-container {
+            margin-top: 30px;
+            border-top: 2px solid color($colors, welcome-footer);
+            padding-top: 30px;
+            .sign-in-button {
+                background: none;
+                color: color($colors, welcome-signup);
+                font-size: 20px;
+                font-weight: bold;
+            }
+        }
+        .sign-in-container::before {
+            content: "Q";
+            background: #F9F9F9;
+            padding: 3px 15px 3px 10px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            top: -13px;
+            width: 5px;
+            text-align: center;
+          }
+    }
+    .image-container {
+        color: color($colors, light);
+        letter-spacing: 1px;
+        padding: 20px 10px;
+        text-align: center;
+        h1 {
+            text-align: left;
+            color: color($colors, welcome-headline);
+            margin-top: 40px;
+            font-size: 35px;
+        }
+
+        img {
+            height: 70px;
+        }
+        p{
+            color: color($colors, welcome-submeadline);
+            text-align: left;
+            font-size: 20px;
+        }
+
+        @media (max-width: 320px) {
+            h1 {
+                font-size: 30px;
+            }
+            p{
+                font-size: 14px;
+            }
+            
+        }
+    }
+
+    ion-footer {
+        text-align: center;
+        p {
+            margin: 0;
+        }
+        .footer-test-one {
+            font-size: 16px;
+            color: color($colors, welcome-footer);
+            font-weight: normal;
+        }
+        .footer-test-two {
+            font-size: 16px;
+            font-weight: bold;
+            color: color($colors, welcome-signup);
+            margin-top: 5px;
+        }
+        @media (max-width: 320px) {
+            .footer-test-one, .footer-test-two {
+                font-size: 13px;
+            }
+            
+        }
+    }
+
+    ion-button, .button-ios, .button-md {
+        height: 55px !important;
+        font-size: 18px;
+        font-weight: 500;
+        width: 60%;
+        margin: 0 auto;
+    }
+
+
+    @media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        .image-container{
+            margin-bottom: 60px;
+            h1 {
+                font-size: 30px;
+                font-weight: bold;
+            }
+            p {
+                font-size: 17px;
+                line-height: 24px;
+                color: #000000;
+            }
+        }
+
+        
+        
+        .footer-section .sign-in-container {
+            margin-top: 40px;
+            border-top: 2px solid #555555;
+            padding-top: 50px;
+        }
+        
+	}
+}

@@ -1,0 +1,45 @@
+<ion-content padding>
+<h3>Selecciona forma de pago</h3>
+
+<ion-list>
+    <ion-item>
+      <ion-label class="pay-amount">Total : {{totalAmount}}</ion-label>
+    </ion-item>
+  <ion-item *ngFor="let paymentType of paymentTypes">
+    <ion-label>{{paymentType.val}}</ion-label>
+    <ion-checkbox  color="inputborder" slot="end" [(ngModel)]="paymentType.isChecked" (click)="toggleSelected(paymentType)"></ion-checkbox>
+  </ion-item>
+</ion-list>
+<div  *ngIf="paymentTypeChosen ==='wallet'" >
+    <p class="wallet-amount">
+      Disponible: {{currentWalletBalance}}
+    </p>
+    <p class="wallet-text">
+      Puedes pagar con tu targeta virtual una parte y la demás se descontará de tu cuenta PayU.
+    </p>
+    <div>
+      <ion-item>
+        <ion-input type="number" placeholder="Ingresa el valor que quieras usar de tu saldo y el resto lo pagas con PayU" [(ngModel)]="dedutctAmount" clearInput (ionChange)="checkValue($event)"></ion-input>
+      </ion-item>
+      <div *ngIf="submit && !dedutctAmount">
+        <p style="color:red">Ingresa un valor</p>
+      </div>
+    </div>
+</div>
+
+<ion-grid>
+  <ion-row>
+    <ion-col size="6">
+      <button ion-button block color="danger" (click)="cancel()" class="cancel">
+        <span>Cancelar</span>
+      </button>
+    </ion-col>
+    <ion-col size="6">
+      <button ion-button block color="buttoncolor" (click)="pay()" class="pay">
+        <span>Pagar</span>
+      </button>
+    </ion-col>
+  </ion-row>
+  </ion-grid>
+
+</ion-content>

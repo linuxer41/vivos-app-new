@@ -1,0 +1,124 @@
+<ion-content>
+    <ion-buttons left>
+      <button ion-button (click)="dismiss()" icon-left class="details-back-button">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <div padding class="list-section">
+      <img class="design-image-1" src="assets/imgs/icon1.png">
+      <img class="design-image-2" src="assets/imgs/icon2.png">
+      <h2 right>
+        Tu perfil
+      </h2>
+      <ion-card class="listing-card"  *ngIf="user">
+        <ion-card-header>
+          <h2>{{user.data.data.meta.full_name[0]}}</h2>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-grid>
+            <ion-row *ngIf="user.data.data.meta.user_address[0]">
+              <ion-col>
+                <ion-icon name="ios-pin"></ion-icon> 
+                {{user.data.data.meta.user_address[0]}}
+              </ion-col>
+            </ion-row>
+            <ion-row *ngIf="user.data.data.user_email">
+              <ion-col>
+                <ion-icon name="ios-mail-outline"></ion-icon>
+                {{user.data.data.user_email}}
+              </ion-col>
+            </ion-row>
+            <ion-row *ngIf="user.data.data.meta.phone_number[0]"> 
+                <ion-col>
+                  <ion-icon name="ios-call"></ion-icon>
+                  {{user.data.data.meta.phone_number[0]}}
+                </ion-col>
+              </ion-row>
+              <!-- <ion-row>
+                  <ion-col>
+                    <ion-icon name="md-help-buoy"></ion-icon>
+                  </ion-col>
+                </ion-row> -->
+                <!-- <ion-row>
+                    <ion-col>
+                      <ion-icon name="md-infinite"></ion-icon>
+                    </ion-col>
+                  </ion-row> -->
+                  <ion-row *ngIf="user.data.data.meta.locale[0]">
+                      <ion-col>
+                        <ion-icon name="ios-link"></ion-icon>
+                        {{user.data.data.meta.locale[0]}}
+                      </ion-col>
+                    </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+
+      <h2 right>
+        Mi Saldo
+      </h2>
+
+      <ion-card class="listing-card balance"  *ngIf="user">
+        <ion-card-header>
+          <h2><span>$</span>{{wallet}}</h2>
+        </ion-card-header>
+      </ion-card>
+
+      <h2 right>
+        Seguridad
+      </h2>
+      <ion-card class="listing-card">
+          <ion-card-content>
+            <form padding [formGroup]="resetPasswordForm">
+              <div class="input-section footer-form">
+                <ion-item>
+                  <ion-input type="password" placeholder="Contraseña anterior" clearInput  [formControl]="resetPasswordForm.controls['old_password']"></ion-input>
+                </ion-item>
+                <div *ngIf="submitted && resetPasswordForm.controls.old_password.errors" class="invalid-feedback">
+                  <p *ngIf="resetPasswordForm.controls.old_password.errors.required" style="color:red">Ingrese contraseña actual</p>
+                </div> 
+                <ion-item>
+                  <ion-input type="password" placeholder="Nueva contraseña" clearInput  [formControl]="resetPasswordForm.controls['new_password']"></ion-input>
+                </ion-item>
+                <div *ngIf="submitted && resetPasswordForm.controls.new_password.errors" class="invalid-feedback">
+                  <p *ngIf="resetPasswordForm.controls.new_password.errors.required" style="color:red">Ingrese nueva contaseña</p>
+                </div> 
+                <ion-item>
+                  <ion-input type="password" placeholder="Ingresar nuevamente la contraseña" clearInput  [formControl]="resetPasswordForm.controls['retype']"></ion-input>
+                </ion-item>
+                <div *ngIf="submitted && resetPasswordForm.controls.retype.errors" class="invalid-feedback">
+                  <p *ngIf="resetPasswordForm.controls.retype.errors.required" style="color:red">Ingrese nuevamente la nueva contraseña</p>
+                </div> 
+              </div>
+            </form>
+          </ion-card-content>
+        </ion-card>
+        <ion-row class="submit-section">
+            <ion-col text-center>
+              <button ion-button block color="secondary"  (click)="onUpdate()" class="new-button">
+                <span *ngIf="!clicked">Actualizar</span>
+                <ion-spinner *ngIf="clicked" name="crescent"></ion-spinner>
+              </button>
+            </ion-col>
+          </ion-row>
+          <ion-row class="submit-section">
+            <ion-col text-center>
+              <button class="logout" ion-button color="backgroundcolor" clear (click)="logOut()">Cerrar sesión</button>
+            </ion-col>
+          </ion-row>
+          
+    </div>   
+    
+  </ion-content>
+
+  <ion-footer>
+    <ion-grid class="common-footer">
+      <ion-row class="footer-inner">
+        <ion-col col-2><img (click)="navCtrl.push('ProfilePage')" class="footer-image" src="assets/imgs/icon3.png"></ion-col>
+        <ion-col col-2><img (click)="navCtrl.push('MyBookingsPage')" class="footer-image" src="assets/imgs/icon4.png"></ion-col>
+        <ion-col col-4><img (click)="navCtrl.setRoot('HomePage')" class="footer-image center" src="assets/imgs/icon5.png"></ion-col>
+        <ion-col col-2><img (click)="navCtrl.push('HelpPage')" class="footer-image" src="assets/imgs/icon6.png"></ion-col>
+        <ion-col col-2><img (click)="navCtrl.push('FavouritePage')" class="footer-image" src="assets/imgs/icon7.png"></ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-footer>

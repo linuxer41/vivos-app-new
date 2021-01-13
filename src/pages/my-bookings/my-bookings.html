@@ -1,0 +1,133 @@
+<!--
+  Generated template for the FavouritePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content>
+  <ion-buttons left>
+    <button ion-button (click)="dismiss()" icon-left class="details-back-button">
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+  </ion-buttons>
+  <div padding class="list-section">
+    <img class="design-image-1" src="assets/imgs/icon1.png">
+    <img class="design-image-2" src="assets/imgs/icon2.png">
+    <h2 right>
+      Mis citas pendientes
+    </h2>
+    <div *ngFor="let upcomingAppointment of upcomingAppointments; let i = index" class="card-section">
+      <ion-icon *ngIf="upcomingAppointment.status != 'cancelled'" class="delete-button" end ios="ios-trash" color="danger"  (click)="bookingDelete(upcomingAppointment, i)"></ion-icon>
+      <ion-card  class="listing-card" (click)="bookingDetails(upcomingAppointment)">
+        <ion-card-header>
+          Fecha: {{upcomingAppointment.booking_date}}
+        </ion-card-header>
+        <ion-card-content>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                Código de cita 
+              </ion-col>
+              <ion-col>
+                {{upcomingAppointment.bk_code}}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                Hora
+              </ion-col>
+              <ion-col>
+                {{upcomingAppointment.start_time}}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                Doctor / Entidad 
+              </ion-col>
+              <ion-col>
+                {{upcomingAppointment.bk_user_to_name}}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                Status
+              </ion-col>
+              <ion-col>
+                {{upcomingAppointment.status}}
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    
+
+    <ion-card  *ngIf="upcomingAppointments.length == 0 && getData" class="listing-card">
+      <ion-card-header>
+        <h2>No hay citas pendientes</h2>
+      </ion-card-header>
+    </ion-card>
+
+    <h2 right>
+      Historial de citas
+    </h2>
+
+    <ion-card  *ngFor="let oldAppointment of oldAppointments" (click)="bookingDetails(oldAppointment)" class="listing-card">
+      <ion-card-header>
+        Fecha {{oldAppointment.booking_date}}
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              Código de cita  
+            </ion-col>
+            <ion-col>
+              {{oldAppointment.bk_code}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Hora
+            </ion-col>
+            <ion-col>
+              {{oldAppointment.start_time}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Doctor / Entidad 
+            </ion-col>
+            <ion-col>
+              {{oldAppointment.bk_user_to_name}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Status
+            </ion-col>
+            <ion-col>
+              {{oldAppointment.status}}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll> -->
+  </div>   
+</ion-content>
+
+<ion-footer>
+  <ion-grid class="common-footer">
+    <ion-row class="footer-inner">
+      <ion-col col-2><img (click)="navCtrl.push('ProfilePage')" class="footer-image" src="assets/imgs/icon3.png"></ion-col>
+      <ion-col col-2><img (click)="navCtrl.push('MyBookingsPage')" class="footer-image" src="assets/imgs/icon4.png"></ion-col>
+      <ion-col col-4><img (click)="navCtrl.setRoot('HomePage')" class="footer-image center" src="assets/imgs/icon5.png"></ion-col>
+      <ion-col col-2><img (click)="navCtrl.push('HelpPage')" class="footer-image" src="assets/imgs/icon6.png"></ion-col>
+      <ion-col col-2><img (click)="navCtrl.push('FavouritePage')" class="footer-image" src="assets/imgs/icon7.png"></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

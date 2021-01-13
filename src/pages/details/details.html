@@ -1,0 +1,213 @@
+<!--
+  Generated template for the DetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+
+<ion-content>
+<div class="main-container">
+  <ion-buttons left>
+    <button ion-button (click)="dismiss()" icon-left class="details-back-button">
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+  </ion-buttons>
+  <div padding class="list-section">
+    <img class="design-image-1" src="assets/imgs/icon1.png">
+    <img class="design-image-2" src="assets/imgs/icon2.png">
+  </div>
+  <div class="details-data-section" *ngIf="detailsData && detailsData.directoty_type_slug != 'clinica'">
+    <ion-card *ngIf="detailsData.name" class="listing-card">
+      <!-- <ion-card-header>
+        {{detailsData.name}}
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{detailsData.directory_type_name}}</p>
+        <p>{{detailsData.address}}</p>
+      </ion-card-content> -->
+
+      <ion-card-content>
+        <p class="card-category">{{detailsData.directory_type_name}}</p>
+      </ion-card-content>
+      <ion-card-header>
+        {{detailsData.name}}
+      </ion-card-header>
+      <!-- <ion-card-content class="content-section">
+        <p>
+          <span *ngIf="detailsData.address">{{detailsData.address}},</span>
+          <span class="phone-no">
+            <ion-icon name="ios-call"></ion-icon>{{detailsData.phone}}
+          </span>
+        </p>
+      </ion-card-content> -->
+      <ion-card-content class="content-section">
+          <p class="doctor-price-spec">
+            <span class="speciality" start *ngIf="detailsData.all.user_profile_specialities">{{detailsData.all.user_profile_specialities.join()}}</span>
+            <span class="price" end *ngIf="detailsData.all.calender_price">$ {{detailsData.all.calender_price}}</span>
+          </p>
+          <p>
+            <span *ngIf="detailsData.address">{{detailsData.address}}</span> 
+          </p>
+      </ion-card-content>
+    </ion-card>
+    <ion-list class="accordian" padding>
+      <ion-item *ngIf="detailsData.all.professional_statements" text-wrap (click)="toggleGroup(1)" [ngClass]="{active: isGroupShown(1)}">
+        <div class="outer-section">
+          <h3 class="clearfix">
+            <span class="hwname" align="left">
+              Información biográfica
+            </span>
+            <span align="right"><ion-icon item-right color="classtime" [name]="isGroupShown(1) ? 'ios-arrow-down-outline' : 'ios-arrow-forward-outline'"></ion-icon></span>
+          </h3>
+        </div>
+        <div *ngIf="isGroupShown(1)" class="innersection">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <p [innerHTML]="detailsData.all.professional_statements"></p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ion-item>
+      <ion-item *ngIf="detailsData.all.experience.length" text-wrap (click)="toggleGroup(2)" [ngClass]="{active: isGroupShown(2)}">
+        <div class="outer-section">
+          <h3 class="clearfix">
+            <span class="hwname" align="left">
+              Experiencia
+            </span>
+            <span align="right"><ion-icon item-right color="classtime" [name]="isGroupShown(2) ? 'ios-arrow-down-outline' : 'ios-arrow-forward-outline'"></ion-icon></span>
+          </h3>
+        </div>
+        <div *ngIf="isGroupShown(2)" class="innersection">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <p [innerHTML]="detailsData.all.experience"></p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ion-item>
+      <ion-item *ngIf="detailsData.all.education.length" text-wrap (click)="toggleGroup(3)" [ngClass]="{active: isGroupShown(3)}">
+        <div class="outer-section">
+          <h3 class="clearfix">
+            <span class="hwname" align="left">
+              Educación
+            </span>
+            <span align="right"><ion-icon item-right color="classtime" [name]="isGroupShown(3) ? 'ios-arrow-down-outline' : 'ios-arrow-forward-outline'"></ion-icon></span>
+          </h3>
+        </div>
+        <div *ngIf="isGroupShown(3)" class="innersection">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <p [innerHTML]="detailsData.all.education"></p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ion-item>
+      <ion-item *ngIf="detailsData.all.location" text-wrap (click)="toggleGroup(3)" [ngClass]="{active: isGroupShown(3)}">
+        <div class="outer-section">
+          <h3 class="clearfix">
+            <span class="hwname" align="left">
+              Ubicación
+            </span>
+            <span align="right"><ion-icon item-right color="classtime" [name]="isGroupShown(3) ? 'ios-arrow-down-outline' : 'ios-arrow-forward-outline'"></ion-icon></span>
+          </h3>
+        </div>
+        <div *ngIf="isGroupShown(3)" class="innersection">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <p>{{detailsData.all.location}}</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div *ngIf="detailsData && detailsData.directoty_type_slug == 'clinica'">
+    
+    <ion-card *ngIf="detailsData.name" class="listing-card profile-card">
+      <ion-card-content>
+        <div class="profile-contaier">
+          <div class="image-section">
+            <img src="{{detailsData.img_url}}">
+          </div>
+          <div class="description-section">
+            <h2>{{detailsData.name}}</h2>
+            <p *ngIf="detailsData.address"><ion-icon name="ios-pin"></ion-icon>{{detailsData.address}}</p>
+            <p *ngIf="detailsData.email"><ion-icon name="md-mail-open"></ion-icon>{{detailsData.email}}</p>
+            <p *ngIf="detailsData.phone"><ion-icon name="ios-call"></ion-icon>{{detailsData.phone}}</p>
+            <p *ngIf="detailsData.website"><ion-icon name="md-globe"></ion-icon>{{detailsData.website}}</p>
+          </div>
+        </div>
+        <p class="profile-footer">
+          <span *ngIf="detailsData.all.linkedin != ''"><a href="{{detailsData.all.linkedin}}"><ion-icon name="logo-linkedin"></ion-icon></a></span>
+          <span *ngIf="detailsData.all.facebook != ''"><a href="{{detailsData.all.facebook}}"><ion-icon name="logo-facebook"></ion-icon></a></span>
+          <span *ngIf="detailsData.all.twitter != ''"><a href="{{detailsData.all.twitter}}"><ion-icon name="logo-twitter"></ion-icon></a></span>
+          <span *ngIf="detailsData.all.google_plus != ''"><a href="{{detailsData.all.google_plus}}"><ion-icon name="logo-googleplus"></ion-icon></a></span>
+          <span *ngIf="detailsData.all.pinterest != ''"><a href="{{detailsData.all.pinterest}}"><ion-icon name="logo-pinterest"></ion-icon></a></span>
+          <span *ngIf="detailsData.all.tumblr != ''"><a href="{{detailsData.all.tumblr}}"><ion-icon name="logo-tumblr"></ion-icon></a></span>
+          <span *ngIf="detailsData.all.instagram != ''"><a href="{{detailsData.all.instagram}}"><ion-icon name="logo-instagram"></ion-icon></a></span>
+          <span *ngIf="detailsData.all.skype != ''"><a href="{{detailsData.all.skype}}"><ion-icon name="logo-skype"></ion-icon></a></span>
+        </p>
+      </ion-card-content>
+    </ion-card>
+    
+    <div class="category-container" padding>
+      <ion-slides slidesPerView="3">
+        <ion-slide *ngFor="let user_profile_specialitiy of detailsData.all.user_profile_specialities">
+          <ion-badge>{{user_profile_specialitiy}}</ion-badge>
+        </ion-slide>
+      </ion-slides>
+    </div>
+
+    <ion-card *ngFor="let doctor of doctors" class="listing-card" (click)="details(doctor.id)">
+      <ion-card-header>
+        <span>{{doctor.directory_type_name}}</span>
+        {{doctor.name}}
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{doctor.address}}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</div>
+
+
+<ion-row class="submit-section">
+  <ion-col text-center>
+    <button ion-button block color="secondary" (click)="onScheDule(detailsData.id)" class="new-button">
+  <span *ngIf="!clicked">¡Agenda una cita!</span>
+    <ion-spinner *ngIf="clicked" name="crescent"></ion-spinner>
+  </button>
+  </ion-col>
+</ion-row>
+<ion-row class="submit-section" *ngIf="!isnotContactForm">
+  <ion-col text-center>
+    <a ion-button block color="secondary" class="new-button"  href="https://api.whatsapp.com/send?phone=573225342944">
+      <span>Whatsapp <ion-icon name="logo-whatsapp"></ion-icon></span>
+    </a>
+  </ion-col>
+</ion-row>
+</ion-content>
+
+
+<ion-footer>
+  <ion-grid class="common-footer">
+    <ion-row class="footer-inner">
+      <ion-col col-2><img (click)="navCtrl.push('ProfilePage')" class="footer-image" src="assets/imgs/icon3.png"></ion-col>
+      <ion-col col-2><img (click)="navCtrl.push('MyBookingsPage')" class="footer-image" src="assets/imgs/icon4.png"></ion-col>
+      <ion-col col-4><img (click)="navCtrl.setRoot('HomePage')" class="footer-image center" src="assets/imgs/icon5.png"></ion-col>
+      <ion-col col-2><img (click)="navCtrl.push('HelpPage')" class="footer-image" src="assets/imgs/icon6.png"></ion-col>
+      <ion-col col-2><img (click)="navCtrl.push('FavouritePage')" class="footer-image" src="assets/imgs/icon7.png"></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>
+

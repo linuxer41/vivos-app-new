@@ -1,0 +1,77 @@
+page-register {
+  form ion-item .item-inner {
+    padding-left: 0px;
+  }
+  .toolbar-background {
+		border-width: 0 !important; 
+		background: color($colors, light);
+	}
+	.content {
+		background-color: color($colors, backgroundcolor);
+	}
+	.header::after {
+		background-image: none;
+	}
+	.logo-class{
+        text-align: center;
+    } 
+	.logo-class .register-title{
+		font-size: 30px;
+		color: color($colors, primary);
+    }
+    ion-item {padding-left:0 !important;}
+    ion-item .item-inner{padding-left:16px;}
+	form ion-item {margin-bottom: 10px !important;}
+	.submit-section .col{
+		padding: 0 !important;
+    }
+    ion-header .toolbar-content {
+        font-size: 20px;
+        margin-left: 55px;
+        color: color($colors, primary);
+        font-weight: bold;
+    }
+    .terms-text {
+        color: color($colors, welcome-footer);
+        font-size: 13px;
+        letter-spacing: 1px;
+        vertical-align: middle;
+        padding: 5px 0px;
+    }
+    .user-type-container {display: inline-flex;}
+    .user-type-container p {margin: 0;}
+    .user-type-container ion-item .item-inner{padding-left:0 !important;border-bottom:0 !important;}
+    .user-type-container ion-item {background-color: transparent;}
+    ion-footer .toolbar-content{text-align: center;}
+    ion-footer .toolbar-background {background-color:  color($colors, primary);}
+    ion-footer button{ color:  color($colors, light); background-color: color($colors, primary);font-weight: bold;font-size: 16px;} 
+    ion-item, .item-ios, .item-md  {
+		background-color: color($colors, backgroundcolor);
+		ion-label[stacked] , .label-ios[stacked], .label-md[stacked]{
+			font-size: 16px;
+		}
+    }
+
+    .text-input {
+      color: color($colors, buttoncolor);
+      font-size: 18px;
+      font-weight: bold;
+	  }
+	.item-ios.item-block .item-inner,  .item-ms.item-block .item-inner {
+		padding-right: 8px;
+		border-bottom: 2px solid color($colors, inputborder);
+    }
+    
+    .toolbar-background {
+		border-width: 0 !important; 
+		background: color($colors, backgroundcolor);
+  }
+  
+  ion-button.new-button, .button-ios.new-button, .button-md.new-button {
+    height: 55px !important;
+    font-size: 18px;
+    font-weight: 500;
+    width: 60%;
+    margin: 0 auto;
+  }
+}

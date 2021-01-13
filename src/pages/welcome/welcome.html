@@ -1,0 +1,42 @@
+<!--
+  Generated template for the WelcomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content padding>
+  <div class="image-container">
+    <img src="assets/imgs/logo.png" />
+    <h1>Ahorra y cuida <br>tu salud.</h1>
+    <p>
+      Ahorra entre un 30% y 70% <br>en los mejores médicos particulares de tu ciudad
+    </p>
+  </div>
+
+  <ion-grid>
+    <ion-row class="footer-section">
+      <ion-col col-12>
+          <ion-button ion-button full (click)="navCtrl.push('LoginPage')" class="new-button">
+            Inicia Sesión
+          </ion-button>
+      </ion-col>
+      <ion-col col-12 class="sign-in-container">
+          <ion-button class="sign-in-button" clear  (click)="navCtrl.push('RegisterPage')" >
+            Crea Una cuenta
+          </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-grid>
+      <ion-col col-12>
+        <p class="footer-test-one">Al continuar, estas aceptando nuestros</p>
+        <p class="footer-test-two">Términos y Servicios <span class="footer-test-one">y</span> Políticas de privacidad</p>
+      </ion-col>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

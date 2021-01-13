@@ -1,0 +1,121 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+
+.custom-avatar {
+    height: 30vw;
+    width: 30vw;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+ion-card.custom-card {
+    box-shadow: none !important;
+    margin: 0 !important;
+    width: 100% !important;
+    background: rgb(167, 146, 241);
+    background: -moz-linear-gradient(142deg, rgb(167, 146, 241) 0%, rgb(101, 228, 233) 100%);
+    background: -webkit-linear-gradient(142deg, rgba(167, 146, 241,1) 0%, rgba(101, 228, 233,1) 100%);
+    background: linear-gradient(142deg, rgba(167, 146, 241,1) 0%, rgba(101, 228, 233,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#be92ef",endColorstr="#76e8f1",GradientType=1);
+}
+.custom-card-inner h2, .custom-card-inner p{color:color($colors, light);}
+.custom-card-inner h2 {font-weight: bold;}
+.custom-card-inner img {
+    border-radius: 50%;
+    height: 100px;
+    width: auto;
+    margin: auto;
+}
+ion-menu .scroll-content, ion-menu .scroll-content ion-list button {background:color($colors, light);}
+
+.menu-listing ion-icon{font-size: 30px; margin-right: 10px; vertical-align: middle;}
+.menu-listing ion-label {color:color($colors, primary);}
+
+.icon-fw {
+    width: 1.28571429em;
+    text-align: center;
+  }
+ion-button.new-button, .button-ios.new-button, .button-md.new-button {
+    color: #fff;
+    background-color:color($colors, buttoncolor);
+    border-radius: 30px;
+    height: 55px !important;
+    font-size: 18px;
+    font-weight: 500;
+    width: 60%;
+    margin: 0 auto;
+}
+
+ion-button.new-button, .button-ios.new-button, .button-md.new-button {
+    height: 55px !important;
+    font-size: 18px;
+    font-weight: 500;
+    width: 60%;
+    margin: 0 auto;
+}
+
+
+.back-button {
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    box-shadow: 1px 1px 5px 2px #ccc;
+    margin-left: 10px;
+    margin-top: 10px;
+    .back-button-text {
+        display: none;
+    }
+    .back-button-icon {
+        color: color($colors, welcome-footer);
+    }
+}
+
+.back-button.bar-button-md {
+    height: 40px;
+}
+
+.common-footer {
+    text-align: center;
+    img.footer-image {
+        height: 25px;
+    }
+    img.footer-image.center {
+        position: absolute;
+        height: 45px;
+        left: 50%;
+        margin-left: -20px;
+        top: -15px;
+        background: #fff;
+        border-radius: 50%;
+        padding: 5px 5px 0;
+        width: 45px;
+    }   
+}
+
+.my-loading-class{
+    .loading-wrapper {
+      background: transparent !important;
+      -webkit-box-shadow :none !important;
+      box-shadow:none;
+    }
+    .custom-spinner-box {
+      width: 100px;
+    }
+  }

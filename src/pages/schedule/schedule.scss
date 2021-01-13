@@ -1,0 +1,263 @@
+page-schedule {
+    .scroll-content {
+        background: rgb(167, 146, 241);
+        background: -moz-linear-gradient(142deg, rgb(167, 146, 241) 0%, rgb(101, 228, 233) 100%);
+        background: -webkit-linear-gradient(142deg, rgba(167, 146, 241,1) 0%, rgba(101, 228, 233,1) 100%);
+        background: linear-gradient(142deg, rgba(167, 146, 241,1) 0%, rgba(101, 228, 233,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#be92ef",endColorstr="#76e8f1",GradientType=1);
+    }
+
+    .custom-ion-label {
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px !important;
+        // padding-left: 15px;
+        // padding: 0px,;
+        &.label__placeholder {
+          font-size: 15px !important;
+          line-height: 13px;
+        //   margin-bottom: 0 !important;
+          margin-bottom: 5px !important;
+        }
+      }
+    .select-section ion-icon{margin-right: 25px;}
+    
+    ion-label ion-icon{color: color($colors,home-headline);}
+    .details-back-button{
+        border-radius: 50%;
+        height: 32px;
+        width: 32px;
+        margin-left: 10px;
+        margin-top: 10px;
+        background-color: color($colors, backgroundcolor);
+        color: color($colors, home-headline);
+        ion-icon {
+            padding: 0px !important;
+        }
+    }
+    h5 {
+        color: color($colors, home-headline);
+        font-size: 20px;
+        text-align: left;
+        padding-left: 20px;
+        margin: 5px;
+    }
+    ion-footer {
+        background: color($colors, light);
+    }
+
+    .item-ios.item-block .item-inner, .item-md.item-block .item-inner{
+        border-bottom: 0px;
+    }
+
+    .text-input::-moz-placeholder {
+        color: color($colors, home-headline);
+        }
+        
+        .text-input:-ms-input-placeholder {
+        color: color($colors, home-headline);
+        }
+        
+        .text-input::-webkit-input-placeholder {
+        text-indent: 0;
+        color: color($colors, home-headline);
+        }
+
+    [col-1] {
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 8.33333%;
+        -ms-flex: 0 0 8.33333%;
+        flex: 0 0 14.285714285714286%;
+        width: 14.285714285714286%;
+        max-width: 14.285714285714286%;
+    }
+    .col {
+    text-align: center;
+    padding: 5px;
+    color:color($colors, home-headline);
+    }
+    .last-month, .next-month {
+    color: color($colors,primary-transparent) !important;
+    font-size: 90%;
+    }
+    .currentDate, .otherDate {
+    padding: 5px;
+    }
+    .currentDate {
+        font-weight: bold;
+        background-color: #75FEE4 !important;
+        color: white !important;
+        border-radius: 30px;
+        height: 26px;
+        width: 26px;
+    }
+    .calendar-header {
+        background-color:color($colors, backgroundcolor);
+        color: #FFFFFF;
+        margin-top: 40px;
+        border-radius: 10px 10px 0 0;
+    }
+    .event-bullet {
+    margin: 2px auto;
+    height: 5px;
+    width: 5px;
+    background-color: color($colors, home-headline);
+    border-radius: 30px;
+    }
+    .selected-date {
+    width: 20px;
+    height: 2px;
+    background-color:color($colors, home-headline);
+    }
+    .unselected-date {
+    border: none;
+    }
+    .footer-form {
+        margin-top: 0px;
+    }
+    .calendar-body {
+        margin-bottom: 40px;
+    .grid {
+        padding: 0;
+        background: color($colors, backgroundcolor);
+        border-radius: 0 0 10px 10px;
+    }
+    .col:last-child {
+        border-right: none;
+    }
+    .calendar-weekday, .calendar-date {
+        text-align: center;
+        margin: 0;
+    }
+    .calendar-weekday {
+        font-weight: bold;
+        border-bottom: solid 1px color($colors, backgroundcolor);
+        background-color: color($colors, backgroundcolor);
+    }
+    .calendar-date {
+        color: color($colors,home-headline);
+        .col {
+        color: color($colors,home-headline);
+        }
+    }
+    .selected {
+        font-weight: bold;
+        background-color: #9b9bad;
+        color: white;
+        border-radius: 30px;
+        padding: 5px;
+        .notappointment {
+            background: transparent;
+            padding: 0;
+        }
+        .hasappointment {
+            background: transparent;
+            padding: 0;
+        }
+
+    }
+    }
+    .selected-slot-data {
+        background:white;
+        color: #272343;
+    }
+    .selected-slot {
+        text-decoration: line-through;
+        color: #272343;
+    }
+    .notappointment {
+        background: #e2dbdb;
+        padding: 4px;
+        border-radius: 50%;
+        color: #bfbfbf;
+
+    }
+    .slot-section { 
+        text-align: center;
+        color: color($colors, danger);
+        font-size: 17px;
+    }
+    .input-section {
+        text-align: center;
+        background: #fff;
+        border-radius: 10px;
+        padding: 5px 0;
+    }
+    .invalid-feedback p{
+        color: color($colors, backgroundcolor);
+        margin: 2px;
+        text-align: left;
+        padding-left: 10px;
+    }
+
+    ion-item.item-ios, ion-item.item-ms {
+        background: transparent;
+    }
+
+    .user-type-container {display: inline-flex;}
+    .user-type-container p {margin: 0;    line-height: 40px;}
+    .user-type-container ion-item .item-inner{padding-left:0 !important;border-bottom:0 !important; box-shadow: none !important;}
+    .user-type-container ion-item {background-color: transparent;}
+    .user-type-container ion-checkbox.checkbox.checkbox-ios{
+        margin: 8px 5px 8px 2px;
+    }
+    .custom-ion-item{
+        // padding-right: 16px;
+
+        input:focus{
+            border: none;
+            // border-bottom: 1px solid rgba(0, 0, 0, 0.71);
+        }
+        input:valid{
+            border: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.71);
+        }
+        input:invalid{
+            border: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.71);
+        }
+        .input-cover{
+            padding-right: 0px;
+        }
+    }
+
+    
+}
+.input-cover{
+    border: none !important;
+}
+
+ion-modal.inset-modal {
+    // transparent black background overlay
+    background-color: rgba(0, 0, 0, .5) !important;
+    transition: opacity .25s ease-in-out;
+    padding: 20vh 10vw;
+  }
+  ion-modal,
+  .show-page {
+      // transparent black background overlay
+      background-color: rgba(0, 0, 0, .5) !important;
+      padding: 0px !important;
+  }
+  .toolbar-background {
+      color: red !important;
+  }
+  ion-modal.modal-wrapper {
+      transform: translateY(30%) !important;
+  }
+  ion-page.modal {
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.5);
+  }
+  .modal-backdrop-bg {
+      background-color: #000;
+      opacity: 0;
+  }
+  .active .modal-backdrop-bg {
+      opacity: 0.5;
+}
+
+.item-inner {
+    border-bottom-color: #f53d3d;
+    -webkit-box-shadow: none;
+    box-shadow: none !important;
+}

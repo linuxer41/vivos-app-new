@@ -1,0 +1,100 @@
+<!--
+  Generated template for the DetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+
+<ion-content>
+  <div class="main-container">
+    <ion-buttons left>
+      <button ion-button (click)="dismiss()" icon-left class="details-back-button">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <div padding class="list-section">
+      <img class="design-image-1" src="assets/imgs/icon1.png">
+      <img class="design-image-2" src="assets/imgs/icon2.png">
+    </div>
+    <div *ngIf="detailsData">
+      <h2 right class="header-content">
+        ¡Has agendado tu cita satisfactoriamente!
+      </h2>
+      <ion-card class="listing-card profile-card">
+        <ion-card-content class="first-content"> 
+          <p class="card-category">{{detailsData.bk_user_to_directory_type_name}}</p>
+        </ion-card-content>
+        <ion-card-header  class="second-content">
+          {{detailsData.bk_user_to_name}}
+        </ion-card-header>
+        <ion-card-content>
+          <div class="profile-contaier">
+            <div class="description-section">
+              <p *ngIf="detailsData.bk_user_to_address"><ion-icon name="ios-pin"></ion-icon>{{detailsData.bk_user_to_address}}, {{detailsData.bk_user_to_location}}</p>
+              <p *ngIf="detailsData.bk_user_to_email"><ion-icon name="md-mail-open"></ion-icon>{{detailsData.bk_user_to_email}}</p>
+              <p *ngIf="detailsData.bk_user_to_phone"><ion-icon name="ios-call"></ion-icon>{{detailsData.bk_user_to_phone}}</p>
+              <p *ngIf="detailsData.bk_user_to_website"><ion-icon name="md-globe"></ion-icon>{{detailsData.bk_user_to_website}}</p>
+            </div>
+          </div>
+          <p class="profile-footer">
+            <span *ngIf="detailsData.bk_user_to_linkedin != ''"><a href="{{detailsData.bk_user_to_linkedin}}"><ion-icon name="logo-linkedin"></ion-icon></a></span>
+            <span *ngIf="detailsData.bk_user_to_facebook != ''"><a href="{{detailsData.bk_user_to_facebook}}"><ion-icon name="logo-facebook"></ion-icon></a></span>
+            <span *ngIf="detailsData.bk_user_to_twitter != ''"><a href="{{detailsData.bk_user_to_twitter}}"><ion-icon name="logo-twitter"></ion-icon></a></span>
+            <span *ngIf="detailsData.bk_user_to_google_plus != ''"><a href="{{detailsData.bk_user_to_google_plus}}"><ion-icon name="logo-googleplus"></ion-icon></a></span>
+            <span *ngIf="detailsData.bk_user_to_pinterest != ''"><a href="{{detailsData.bk_user_to_pinterest}}"><ion-icon name="logo-pinterest"></ion-icon></a></span>
+            <span *ngIf="detailsData.bk_user_to_tumblr != ''"><a href="{{detailsData.bk_user_to_tumblr}}"><ion-icon name="logo-tumblr"></ion-icon></a></span>
+            <span *ngIf="detailsData.bk_user_to_instagram != ''"><a href="{{detailsData.bk_user_to_instagram}}"><ion-icon name="logo-instagram"></ion-icon></a></span>
+            <span *ngIf="detailsData.bk_user_to_skype != ''"><a href="{{detailsData.bk_user_to_skype}}"><ion-icon name="logo-skype"></ion-icon></a></span>
+          </p>
+        </ion-card-content>
+      </ion-card>
+
+      <h2 right class="header-content">
+        Día y hora
+      </h2>
+      <ion-card class="listing-card schedule">
+        <ion-card-header>
+          <p left>{{detailsData.booking_date}} <span right>{{detailsData.start_time}}</span></p>
+          
+        </ion-card-header>
+      </ion-card>
+
+      <h2 right class="header-content">
+        Información del paciente
+      </h2>
+      <ion-card class="listing-card patient">
+        <ion-card-header>
+          <p left>Service : {{detailsData.bk_service}}</p>
+          <p left>Category : {{detailsData.bk_category}}</p>
+          <p left>Nombre : {{detailsData.user_name}}</p>
+          <p left>Telefone : {{detailsData.bk_phone}}</p>
+          <p left>Email : {{detailsData.bk_useremail}}</p>
+          <p left>Notas : {{detailsData.notes}}</p>
+        </ion-card-header>
+      </ion-card>
+      <h2 right class="header-content">
+        Has ahorrado
+      </h2>
+      <ion-card class="listing-card price">
+        <ion-card-header>
+          <h2>$ {{detailsData.appointment_fee}}</h2>
+        </ion-card-header>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>
+
+
+<ion-footer>
+  <ion-grid class="common-footer">
+    <ion-row class="footer-inner">
+      <ion-col col-2><img (click)="navCtrl.push('ProfilePage')" class="footer-image" src="assets/imgs/icon3.png"></ion-col>
+      <ion-col col-2><img (click)="navCtrl.push('MyBookingsPage')" class="footer-image" src="assets/imgs/icon4.png"></ion-col>
+      <ion-col col-4><img (click)="navCtrl.setRoot('HomePage')" class="footer-image center" src="assets/imgs/icon5.png"></ion-col>
+      <ion-col col-2><img (click)="navCtrl.push('HelpPage')" class="footer-image" src="assets/imgs/icon6.png"></ion-col>
+      <ion-col col-2><img (click)="navCtrl.push('FavouritePage')" class="footer-image" src="assets/imgs/icon7.png"></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

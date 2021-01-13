@@ -1,0 +1,63 @@
+page-profile {
+    .scroll-content {
+        background: rgb(167, 146, 241);
+        background: -moz-linear-gradient(142deg, rgb(167, 146, 241) 0%, rgb(101, 228, 233) 100%);
+        background: -webkit-linear-gradient(142deg, rgba(167, 146, 241,1) 0%, rgba(101, 228, 233,1) 100%);
+        background: linear-gradient(142deg, rgba(167, 146, 241,1) 0%, rgba(101, 228, 233,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#be92ef",endColorstr="#76e8f1",GradientType=1);
+    }
+    .list-section {
+        position: relative;
+        margin-top: 20px;
+        .design-image-1 {
+            position: absolute;
+            width: 20px;
+            right: 60px;
+            top: 4px;
+        }
+        .design-image-2 {
+            position: absolute;
+            width: 80px;
+            left: 80px;
+            top: -50px;
+        }   
+    }
+
+    .details-back-button{
+        border-radius: 50%;
+        height: 32px;
+        width: 32px;
+        margin-left: 10px;
+        margin-top: 10px;
+        background-color: color($colors, backgroundcolor);
+        color: color($colors, home-headline);
+    }
+
+    .listing-card {
+        margin: 30px 0;
+        width: 100%;
+        border-radius: 15px;
+        form{
+            padding: 0px !important;
+        }
+    }
+    .listing-card.balance h2{
+        margin-top: 0px !important;
+        color: color($colors, buttoncolor);
+        text-align: right;
+        span{
+            margin-right: 10px;
+        }
+    }
+    
+
+    .listing-card h2{
+        font-size: 23px;
+        font-weight: 700;
+        margin-top: 15px !important;
+    }
+    .logout span{
+        font-size: 18px;
+        font-weight: bolder;
+    }
+}

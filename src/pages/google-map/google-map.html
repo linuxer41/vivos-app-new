@@ -1,0 +1,33 @@
+<ion-content padding>
+    <h3>Seleccione su ubicación</h3>
+    <div class="search-container">
+        <ion-item class="input-search-sections">
+            <ion-label></ion-label>
+            <ion-input type="text" placeholder="Tu ubicación" clearInput (ionChange)="updateSearchResults()" [(ngModel)]="autocomplete.input"></ion-input>
+            <!-- <ion-input type="text" placeholder="Tu ubicación" clearInput (ionChange)="writeDown()" [(ngModel)]="location"></ion-input> -->
+
+        </ion-item>
+        <ion-list [hidden]="autocompleteItems.length == 0" class="list-result">
+            <ion-item *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResult(item)">
+                {{ item.description }}
+            </ion-item>
+        </ion-list>
+    </div>
+    
+
+    <ion-grid>
+        <ion-row>
+            <ion-col size="6">
+            <button ion-button block color="danger" (click)="cancel()" class="cancel">
+                <span>Atrás</span>
+            </button>
+            </ion-col>
+            <ion-col size="6">
+            <button ion-button block color="buttoncolor" (click)="ok()" class="pay">
+                <span>Aplicar</span>
+            </button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <div #map id="map"></div>
+</ion-content>
