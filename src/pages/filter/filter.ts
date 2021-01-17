@@ -21,11 +21,13 @@ export class FilterPage {
   localLength = 10;
   slug = "";
   title = "";
-  minPrice = 0;
-  maxPrice = 0;
+  minPrice = 60000;
+  maxPrice = 180000;
   minPriceToShow = 40000;
   maxPriceToShow = 700000;
   step = 10000
+  min_radius = 1
+  max_radius = 200
   public loading:any;
   doctors = [];
   constructor(
@@ -39,8 +41,7 @@ export class FilterPage {
   ) {
     this.searchForm = this.formBuilder.group({
       keyword: [''],
-      geo_distance: [10],
-      geo_location: [''],
+      radius_search: 10,
       pricerange: [{lower: 60000, upper: 180000}]
     });
   }
@@ -50,7 +51,7 @@ export class FilterPage {
   }
 
   updateResults() {
-    this.localLength = this.searchForm.value.geo_distance
+    this.localLength = this.searchForm.value.radius_search
   }
 
   updatePriceResults() {

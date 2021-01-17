@@ -19,8 +19,8 @@
         <ion-item class="input-search-sections range-item">
             <!-- <ion-label class="main-label">Precio</ion-label> -->
             <ion-range  [formControl]="searchForm.controls['pricerange']" dualKnobs="true" [min]="minPriceToShow" [max]="maxPriceToShow" [step]="step" (ionChange)="updatePriceResults()">
-                <ion-label range-left class="left-section">$ <span [innerHTML]="minPriceToShow"></span></ion-label>
-                <ion-label range-right class="right-section">$ <span [innerHTML]="maxPriceToShow"></span></ion-label>
+                <ion-label range-left class="left-section">$ {{minPrice}}</ion-label>
+                <ion-label range-right class="right-section">$ {{maxPrice}}</ion-label>
             </ion-range>
         </ion-item>
         <!-- <h5 class="filter-item-title">Ubicación</h5> -->
@@ -32,9 +32,9 @@
       <ion-item class="input-search-sections range-item">
         <!-- <ion-label class="main-label">Distancia</ion-label> -->
 
-        <ion-range [formControl]="searchForm.controls['geo_distance']" min="1" max="35" color="#c5c5c5" (ionChange)="updateResults()">
+        <ion-range [formControl]="searchForm.controls['radius_search']" [min]="min_radius" [max]="max_radius" color="#c5c5c5" (ionChange)="updateResults()">
           <ion-label range-left class="left-section">{{localLength}} kM</ion-label>
-          <ion-label range-right class="right-section">35 kM</ion-label>
+          <ion-label range-right class="right-section">{{max_radius}} kM</ion-label>
         </ion-range>
       </ion-item>
       <h5 class="filter-item-title">Palabra Clave</h5>

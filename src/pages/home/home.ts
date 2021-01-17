@@ -70,6 +70,10 @@ export class HomePage {
       city: [''],
       geo_location: [''],
       geo_distance: [10],
+      radius_search: [10],
+      current_longitude: [''],
+      current_latitude: [''],
+      current_location: [''],
       latitude: [''],
       longitude:[''],
       pricerange: [{lower: 1, upper: 999999}]
@@ -240,13 +244,15 @@ export class HomePage {
       console.log(resp);
       this.searchForm.get('latitude').setValue(resp.coords.latitude);
       this.searchForm.get('longitude').setValue(resp.coords.longitude);
+      this.searchForm.get('current_latitude').setValue(resp.coords.latitude);
+      this.searchForm.get('current_longitude').setValue(resp.coords.longitude);
+      // this.searchForm.get('current_location').setValue("ok");
      }).catch((error) => {
        console.log('Error getting location', error);
      });
   }
 
   onCategorySelect(){
-    console.log(event)
     this.scrollTo("city")
     // document.getElementById('input_city').scrollIntoView();
   }
@@ -389,6 +395,8 @@ export class HomePage {
         this.searchForm.get('latitude').setValue(data.position.lat);
         this.searchForm.get('longitude').setValue(data.position.lng);
         this.searchForm.get('geo_location').setValue(data.location);
+        this.searchForm.get('current_longitude').setValue(data.position.lat);
+        this.searchForm.get('current_latitude').setValue(data.position.lng);
       }
     });
     profileModal.present();
@@ -399,13 +407,14 @@ export class HomePage {
       if(data.form !== "") {
         console.log(data)
         this.searchForm.get('city').setValue('')
-        this.searchForm.get('geo_distance').setValue(data.form.geo_distance);
-        this.searchForm.get('geo_location').setValue("data.form.geo_distance");
+        // this.searchForm.get('radius_search').setValue(data.form.radius_search);
+        this.searchForm.get('radius_search').setValue(1000000);
+        this.searchForm.get('current_location').setValue("ok");
         this.searchForm.get('keyword').setValue(data.form.keyword);
         this.searchForm.get('pricerange').setValue(data.form.pricerange);
         console.log('this.searchForm', this.searchForm)
         this.onSearch()
-        this.searchForm.get('geo_location').setValue("");
+        this.searchForm.get('current_location').setValue("ko"); // reset current location
       }
     });
     profileModal.present();
