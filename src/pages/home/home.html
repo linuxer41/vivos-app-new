@@ -32,7 +32,7 @@
     <div class="form-content">
       <ion-item class="select-section input-search-sections" id="speciality">
         <ion-label>Especialistas en...</ion-label>
-        <ion-select id="input_speciality" [formControl]="searchForm.controls['speciality']">
+        <ion-select id="input_speciality" [formControl]="searchForm.controls['speciality']" (ionChange)="onCategorySelect()">
           <ion-option *ngFor="let subCategory of subCategories" value="{{subCategory.slug}}">
             {{subCategory.name}}
           </ion-option>

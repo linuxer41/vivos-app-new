@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { LoadingController,AlertController } from 'ionic-angular';
+import { settings } from './config'
 /*
   Generated class for the CommonProvider provider.
 
@@ -10,7 +11,7 @@ import { LoadingController,AlertController } from 'ionic-angular';
 @Injectable()
 export class CommonProvider {
   //public apiUrl:string='http://192.168.0.4/wp/vivos/wp-json/api/v1/'; //local
-  public apiUrl:string='https://masvivos.com/vivos/wp-json/api/v1/'; //live  
+  public apiUrl:string=`${settings.baseUrl}${settings.apiPath}`; //live  
   public headers:any;
   public loading:any;
   constructor(

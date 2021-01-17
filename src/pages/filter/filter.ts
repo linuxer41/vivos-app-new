@@ -21,8 +21,11 @@ export class FilterPage {
   localLength = 10;
   slug = "";
   title = "";
-  minPrice = 1;
-  maxPrice = 99999;
+  minPrice = 0;
+  maxPrice = 0;
+  minPriceToShow = 40000;
+  maxPriceToShow = 700000;
+  step = 10000
   public loading:any;
   doctors = [];
   constructor(
@@ -38,7 +41,7 @@ export class FilterPage {
       keyword: [''],
       geo_distance: [10],
       geo_location: [''],
-      pricerange: [{lower: 1, upper: 50000}]
+      pricerange: [{lower: 60000, upper: 180000}]
     });
   }
 

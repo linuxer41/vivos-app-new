@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoadingController,AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { settings } from '../../providers/common/config';
 /**
  * Generated class for the SchedulePage page.
  *
@@ -361,10 +362,10 @@ export class SchedulePage {
 
         if(data.paymentTypeChosen === 'wallet_payu' || data.paymentTypeChosen === 'payu' ){
           let paymentProvidingDataString = Object.keys(paymentProvidingData).map(key => key + '=' + paymentProvidingData[key]).join('&');
-          console.log('https://masvivos.com/vivos/pago/?'+paymentProvidingDataString)
-          const browser = this.iab.create('https://masvivos.com/vivos/pago/?'+paymentProvidingDataString, '_blank', 'location=no');
+          console.log(settings.baseUrl+'/pago/?'+paymentProvidingDataString)
+          const browser = this.iab.create(settings.baseUrl+'/pago/?'+paymentProvidingDataString, '_blank', 'location=no');
           browser.on('loadstop').subscribe(event => {
-            if(event.url.includes('https://masvivos.com/vivos/sucess')) {
+            if(event.url.includes(settings.baseUrl+'/sucess')) {
               browser.close();
               this.getWalletDetailsFetch();
               let prompt = this.alertCtrl.create({
@@ -381,7 +382,7 @@ export class SchedulePage {
               });
               prompt.present();
             }
-            if(event.url.includes('https://masvivos.com/vivos/failed')) {
+            if(event.url.includes(settings.baseUrl+'/failed')) {
               browser.close();
               let prompt = this.alertCtrl.create({
                 title: 'Error',

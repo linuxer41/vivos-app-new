@@ -36,7 +36,8 @@ export class DetailsPage {
     this.authProvider.getDetails(this.navParams.get('id')).subscribe(
       res => {
         this.loading.dismiss();
-        this.detailsData = res;    
+        this.detailsData = res;
+        console.log(res) 
         if(this.detailsData.all.privacy.contact_form === "on") {
           this.isnotContactForm = false;
           this.common.showPrompt('Contáctanos','Este profesional no tiene su agenda sincronizada en tiempo real. Para agendar, primero contactanos a través del formulario o Whatsapp para verificar las fechas disponibles. Una vez lo sepas, vuelve a hacer el agendamiento acá.');

@@ -18,12 +18,12 @@
         <h5 class="filter-item-title">Precio</h5>
         <ion-item class="input-search-sections range-item">
             <!-- <ion-label class="main-label">Precio</ion-label> -->
-            <ion-range  [formControl]="searchForm.controls['pricerange']" dualKnobs="true" min="200000" max="600000" step="10" (ionChange)="updatePriceResults()">
-                <ion-label range-left class="left-section">$ {{minPrice}}</ion-label>
-                <ion-label range-right class="right-section">$ {{maxPrice}}</ion-label>
+            <ion-range  [formControl]="searchForm.controls['pricerange']" dualKnobs="true" [min]="minPriceToShow" [max]="maxPriceToShow" [step]="step" (ionChange)="updatePriceResults()">
+                <ion-label range-left class="left-section">$ <span [innerHTML]="minPriceToShow"></span></ion-label>
+                <ion-label range-right class="right-section">$ <span [innerHTML]="maxPriceToShow"></span></ion-label>
             </ion-range>
         </ion-item>
-        <h5 class="filter-item-title">Ubicación</h5>
+        <!-- <h5 class="filter-item-title">Ubicación</h5> -->
         <!-- <ion-item class="input-search-sections">
           <ion-label></ion-label>
           <ion-input class="ion-inp-keyw" [formControl]="searchForm.controls['geo_location']" type="text" placeholder="Tu Ubicación" clearInput ></ion-input>

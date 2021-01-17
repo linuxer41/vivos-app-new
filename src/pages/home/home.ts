@@ -37,7 +37,7 @@ export class HomePage {
   slug = "";
   title = "";
   minPrice = 1;
-  maxPrice = 99999;
+  maxPrice = 999999;
   favourites = [];
     autocompleteService: any;
     places:any;
@@ -72,7 +72,7 @@ export class HomePage {
       geo_distance: [10],
       latitude: [''],
       longitude:[''],
-      pricerange: [{lower: 1, upper: 50000}]
+      pricerange: [{lower: 1, upper: 999999}]
     });
     this.nativeAudio.preloadSimple('uniqueId1', 'assets/file-sound.mp3').then((success)=>{
       console.log("Sound success");
@@ -83,7 +83,7 @@ export class HomePage {
       // this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
       // this.autocomplete = { input: '' };
       // this.autocompleteItems = [];
-    //this.loadFavourite();
+      this.loadFavourite();
       this.getCities()
       this.getCountries();
   }
@@ -140,9 +140,9 @@ export class HomePage {
         this.autocompleteItems = [];
     }
 
-  ionViewDidEnter() {
-    this.loadFavourite();
-  }
+  // ionViewDidEnter() {
+  //   this.loadFavourite();
+  // }
 
   updateResults() {
     this.localLength = this.searchForm.value.geo_distance
@@ -243,6 +243,12 @@ export class HomePage {
      }).catch((error) => {
        console.log('Error getting location', error);
      });
+  }
+
+  onCategorySelect(){
+    console.log(event)
+    this.scrollTo("city")
+    // document.getElementById('input_city').scrollIntoView();
   }
 
   itemTapped(categoryId, slug, title, isScroll) {
