@@ -407,8 +407,8 @@ export class HomePage {
       if(data.form !== "") {
         console.log(data)
         this.searchForm.get('city').setValue('')
-        // this.searchForm.get('radius_search').setValue(data.form.radius_search);
-        this.searchForm.get('radius_search').setValue(1000000);
+        this.searchForm.get('radius_search').setValue(data.form.radius_search);
+        // this.searchForm.get('radius_search').setValue(1000000);
         this.searchForm.get('current_location').setValue("ok");
         this.searchForm.get('keyword').setValue(data.form.keyword);
         this.searchForm.get('pricerange').setValue(data.form.pricerange);

@@ -153,6 +153,14 @@ page-schedule {
             background: transparent;
             padding: 0;
         }
+        .freeappointment {
+            background: transparent;
+            padding: 0;
+        }
+        .fullappointment {
+            background: transparent;
+            padding: 0;
+        }
 
     }
     }
@@ -169,7 +177,18 @@ page-schedule {
         padding: 4px;
         border-radius: 50%;
         color: #bfbfbf;
-
+    }
+    .freeappointment {
+        background: #d9b3ff;
+        padding: 4px;
+        border-radius: 50%;
+        color: #000000;
+    }
+    .fullappointment {
+        background: #ff8787;
+        padding: 4px;
+        border-radius: 50%;
+        color: #000000;
     }
     .slot-section { 
         text-align: center;

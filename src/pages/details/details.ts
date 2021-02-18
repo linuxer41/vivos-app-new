@@ -37,7 +37,7 @@ export class DetailsPage {
       res => {
         this.loading.dismiss();
         this.detailsData = res;
-        console.log(res) 
+        console.log('this.doctors',res) 
         if(this.detailsData.all.privacy.contact_form === "on") {
           this.isnotContactForm = false;
           this.common.showPrompt('Contáctanos','Este profesional no tiene su agenda sincronizada en tiempo real. Para agendar, primero contactanos a través del formulario o Whatsapp para verificar las fechas disponibles. Una vez lo sepas, vuelve a hacer el agendamiento acá.');
@@ -92,7 +92,7 @@ export class DetailsPage {
   }
   
   onScheDule(id) {
-    this.navCtrl.push('SchedulePage', {id: id});
+    this.navCtrl.push('SchedulePage', {id: id, detailsData:this.detailsData});
   }
 
   toggleGroup(group) {

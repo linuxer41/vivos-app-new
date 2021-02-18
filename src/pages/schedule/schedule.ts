@@ -50,6 +50,7 @@ export class SchedulePage {
   useremail;
   phone_number;
   submitted = false;
+  weekdays = ["monday","tuesday","wednesday","thursday","triday","saturday", "sunday"]
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -136,6 +137,7 @@ export class SchedulePage {
         this.common.showPrompt('Error','Intenta de nuevo');
       }
     );
+    console.log('nava',this.navParams)
   }
 
   doctorTimeSlot(date) {
@@ -143,6 +145,7 @@ export class SchedulePage {
       res2 => {
         this.loading.dismiss();
         this.doctorsTimeSlotData = res2;
+        // console.log(this.doctorsTimeSlotData)
         this.selectedSlot = '';
         let dateTosend = new Date(this.date.getFullYear(), this.date.getMonth()+1, 0);
         this.getCurrentMonthData(dateTosend)
@@ -258,14 +261,48 @@ export class SchedulePage {
     ).subscribe(
       res2 => {
         this.loading.dismiss();
-        let keysDate = Object.keys(res2['month_timesolts']);
-        for (let index = 0; index < keysDate.length; index++) {
-          if(res2['month_timesolts'][keysDate[index]].length > 0){
-            this.appointedInThisMonth.push(index+1)
-          }
-        }
+        let slot_month_data = res2['month_timesolts']
+        console.log(res2['month_timesolts'])
+        // let keysDate = Object.keys(res2['month_timesolts']);
+        // detailsData
+        let detailsData = this.navParams.get('detailsData')
+        let _schedules = detailsData && detailsData.all && detailsData.all.schedules && detailsData.all.schedules || {}
+        console.log('schedules',_schedules)
+        for (const key in slot_month_data) {
+          let info = {
+              day:null,
+              date: null,
+              hasfree: false,
+              hasappointment: false
+            }
+          if (Object.prototype.hasOwnProperty.call(slot_month_data, key)) {
+            const element = slot_month_data[key];
+            let date = new Date(key).getDay()
 
-        console.log(this.appointedInThisMonth)
+            // check if has time
+            for (const _key in _schedules) {
+              if (Object.prototype.hasOwnProperty.call(_schedules, _key)) {
+                const _element = _schedules[_key];
+                if (this.weekdays[date].startsWith(_key.split('_')[0]) && _element) {
+                  info.hasappointment = true
+                }else{
+                  info.hasfree = false
+                }
+                
+              }
+            }
+            // check free days
+            info.date = key
+            info.day = key.split('-')[2]
+            for (const _infodata of element) {
+              if (_infodata.isSelected && info.hasappointment) {
+                info.hasfree = true
+              }
+            }
+          }
+          this.appointedInThisMonth.push(info)
+        }
+        console.log('month  ',this.appointedInThisMonth)
       },
       err => {
         this.loading.dismiss();
@@ -275,18 +312,44 @@ export class SchedulePage {
   }
 
   checkHasApointment(date) {
+    // console.log('date'+date)
     let classname='';
     if(this.appointedInThisMonth) {
-      // console.log(this.appointedInThisMonth);
-      if(this.appointedInThisMonth.indexOf(date) != -1) {
-        classname = 'hasappointment';
-      } else{
-        classname = 'notappointment';
+      
+      if(this.appointedInThisMonth[date-1]) {
+        // console.log('incheck',this.appointedInThisMonth);
+        let _apo = this.appointedInThisMonth[date-1]
+        // console.log('apo', _apo)
+        this.daysInThisMonth.indexOf(date)
+        if (_apo.hasappointment) {
+          classname = 'hasappointment';
+          console.log(new Date().getDate()>date)
+          if (new Date().getTime()<new Date(_apo.date).getTime()) {
+            if (_apo.hasfree) {
+              classname = 'freeappointment';
+            } else {
+              classname = 'notappointment';
+            }
+          }else{
+            classname = 'hasappointment';
+          }
+          
+        }else {
+          classname = 'notappointment';
+          if (new Date().getTime()<new Date(_apo.date).getTime()) {
+          }else{
+            classname = 'hasappointment';
+          }
+        }
+      //   classname = 'hasappointment';
+      // } else{
+      //   classname = 'notappointment';
+      // }
       }
     }
     if(this.currentDate == date){
       classname += ' currentDate';
-    } else{
+    } else{.325478
       classname += ' otherDate';
     }
     return classname;

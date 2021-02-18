@@ -341,6 +341,22 @@ export class AuthProvider {
 
   getDoctorsTimeSlot(userId, date) :Observable<any> {
     const url = this.apiUrl + 'booking_schedule/get_timeslots?user_id='+userId+'&slot_date='+date;
+    console.log(url)
+    return this.http
+      .get(url,{ headers: this.headers })
+      .map(
+        res => {
+          return res.json();
+        },
+        err => {
+          return err;
+        }
+      )
+  }
+
+  getDoctorsTimeSlotMonth(userId, year, month) :Observable<any> {
+    const url = this.apiUrl + 'booking_schedule/get_timeslots_month?user_id='+userId+'&year='+year+'&month='+month;
+    console.log(url)
     return this.http
       .get(url,{ headers: this.headers })
       .map(
