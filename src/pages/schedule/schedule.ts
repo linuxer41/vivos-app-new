@@ -359,14 +359,14 @@ export class SchedulePage {
     let d = new Date();
     let chosenMonth = this.date.getMonth()+1;
     console.log('chosenMonth', chosenMonth, 'd.getMonth()', (d.getMonth()+1))
-    if(day >= d.getDate() && chosenMonth >= (d.getMonth()+1)) {
+    if(day >= d.getDate() && chosenMonth >= (d.getMonth()+1) && this.appointedInThisMonth[day-1].hasappointment) {
       this.selectedDay = day
       let selectedDayFormatted = this.date.getFullYear()+"-"+(this.date.getMonth()+1)+"-"+day;
       this.appoinmentForm.get('slot_date').setValue(selectedDayFormatted);
       this.presentLoadingCustom();
       this.doctorTimeSlot(selectedDayFormatted);
     } else{
-      if(chosenMonth > (d.getMonth()+1)) {
+      if(chosenMonth > (d.getMonth()+1) && this.appointedInThisMonth[day-1].hasappointment) {
         this.selectedDay = day
         let selectedDayFormatted = this.date.getFullYear()+"-"+(this.date.getMonth()+1)+"-"+day;
         this.appoinmentForm.get('slot_date').setValue(selectedDayFormatted);
